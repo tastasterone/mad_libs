@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Madlibs{% endblock %}
+
+{% block content %}
+    <h1>Madlibs</h1>
+    <form action='/story' id='story-form'>
+        <label for="story-setting">Select story setting:    </label>
+        <select name='setting' id='story-setting'>
+            <option value='long-time'>Long time ago</option>
+            <option value='planet'>On a planet</option>
+            <option value='ocean'>In the ocean</option>
+            <option value='swamp'>In the swamp</option>
+            <option value='kingdom'>In the kingdom</option>
+        </select>
+        <table>
+            {% for prompts in user_prompts %}
+                <tr>
+                    <td>{{ prompts }} </td>
+                    <td><input name="{{prompts}}"></td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td><button type='submit' id='create-story-button'>Submit</button></td>
+            </tr>
+        </table>
+    </form>
+
+{% endblock %}
+
